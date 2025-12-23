@@ -59,30 +59,45 @@ export function MainNav() {
   const [unreadNotifications, setUnreadNotifications] = useState(0)
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [messages, setMessages] = useState<Message[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const loadProfile = async () => {
-      const supabase = createClient()
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
+      console.log("[v0] Loading profile data...")
+      setIsLoading(true)
 
-      if (user) {
-        const { data } = await supabase
+      try {
+        const supabase = createClient()
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
+
+        if (!user) {
+          console.log("[v0] No user found")
+          setIsLoading(false)
+          return
+        }
+
+        console.log("[v0] User found, fetching profile...")
+
+        const { data: profileData, error: profileError } = await supabase
           .from("profiles")
           .select("full_name, avatar_url, university")
           .eq("id", user.id)
           .single()
 
-        if (data) {
-          setProfile(data)
+        if (profileError) {
+          console.error("[v0] Profile fetch error:", profileError)
+        } else if (profileData) {
+          console.log("[v0] Profile loaded successfully")
+          setProfile(profileData)
         }
 
-        const { data: notifData } = await supabase
+        const { data: notifData, error: notifError } = await supabase
           .from("notifications")
           .select(`
             *,
-            actor_profile:actor_id (
+            actor_profile:profiles!notifications_actor_id_fkey (
               full_name,
               avatar_url
             )
@@ -91,15 +106,17 @@ export function MainNav() {
           .order("created_at", { ascending: false })
           .limit(5)
 
-        if (notifData) {
+        if (notifError) {
+          console.error("[v0] Notifications fetch error:", notifError)
+        } else if (notifData) {
           setNotifications(notifData)
         }
 
-        const { data: msgData } = await supabase
+        const { data: msgData, error: msgError } = await supabase
           .from("messages")
           .select(`
             *,
-            sender:sender_id (
+            sender:profiles!messages_sender_id_fkey (
               full_name,
               avatar_url
             )
@@ -108,29 +125,39 @@ export function MainNav() {
           .order("created_at", { ascending: false })
           .limit(5)
 
-        if (msgData) {
+        if (msgError) {
+          console.error("[v0] Messages fetch error:", msgError)
+        } else if (msgData) {
           setMessages(msgData)
         }
 
-        const { count } = await supabase
+        const { count, error: msgCountError } = await supabase
           .from("messages")
           .select("*", { count: "exact", head: true })
           .eq("receiver_id", user.id)
           .eq("is_read", false)
 
-        if (count) {
+        if (msgCountError) {
+          console.error("[v0] Message count error:", msgCountError)
+        } else if (count !== null) {
           setUnreadMessages(count)
         }
 
-        const { count: notifCount } = await supabase
+        const { count: notifCount, error: notifCountError } = await supabase
           .from("notifications")
           .select("*", { count: "exact", head: true })
           .eq("user_id", user.id)
           .eq("is_read", false)
 
-        if (notifCount) {
+        if (notifCountError) {
+          console.error("[v0] Notification count error:", notifCountError)
+        } else if (notifCount !== null) {
           setUnreadNotifications(notifCount)
         }
+      } catch (error) {
+        console.error("[v0] Error loading profile data:", error)
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -140,7 +167,7 @@ export function MainNav() {
   const handleSignOut = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
-    router.push("/auth/login")
+    router.push("/")
     router.refresh()
   }
 
@@ -346,8 +373,8 @@ export function MainNav() {
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{profile?.full_name}</p>
-                  <p className="text-xs leading-none text-muted-foreground">{profile?.university}</p>
+                  <p className="text-sm font-medium leading-none">{profile?.full_name || "Loading..."}</p>
+                  <p className="text-xs leading-none text-muted-foreground">{profile?.university || ""}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
