@@ -188,11 +188,11 @@ export default function OnboardingPage() {
                         <SelectValue placeholder="Select year" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Freshman">Freshman</SelectItem>
-                        <SelectItem value="Sophomore">Sophomore</SelectItem>
-                        <SelectItem value="Junior">Junior</SelectItem>
-                        <SelectItem value="Senior">Senior</SelectItem>
-                        <SelectItem value="Graduate">Graduate</SelectItem>
+                        <SelectItem value="1st_Year">1st Year</SelectItem>
+                        <SelectItem value="2nd_Year">2nd Year</SelectItem>
+                        <SelectItem value="3rd_Year">3rd Year</SelectItem>
+                        <SelectItem value="4th_Year">4th Year</SelectItem>
+                        <SelectItem value="5th_Year">5th Year</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -203,7 +203,7 @@ export default function OnboardingPage() {
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 1234567890"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
