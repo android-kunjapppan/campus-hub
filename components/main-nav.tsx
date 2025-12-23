@@ -4,7 +4,7 @@ import type React from "react"
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Bell, MessageSquare, Search, User, LogOut, Settings, GraduationCap, Award as IdCard } from "lucide-react"
+import { Bell, MessageSquare, Search, User, LogOut, Settings, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -354,10 +354,6 @@ export function MainNav() {
               <DropdownMenuItem onClick={() => router.push("/profile")}>
                 <User className="mr-2 h-4 w-4" />
                 View Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/profile/id-card")}>
-                <IdCard className="mr-2 h-4 w-4" />
-                Student ID
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => router.push("/settings")}>
                 <Settings className="mr-2 h-4 w-4" />

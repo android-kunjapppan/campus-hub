@@ -98,11 +98,11 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
     <div className="space-y-6">
       {/* Search Bar */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-muted-foreground" />
         <Input
           type="search"
           placeholder="Search by name, university, or department..."
-          className="pl-10 pr-10 h-12 text-base"
+          className="pl-9 md:pl-10 pr-9 md:pr-10 h-10 md:h-12 text-sm md:text-base"
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
@@ -111,7 +111,7 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
             onClick={() => handleSearch("")}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 md:h-5 md:w-5" />
           </button>
         )}
       </div>
@@ -119,9 +119,9 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
       {/* Skill Filters */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold">Filter by Skills</h3>
+          <h3 className="font-semibold text-sm md:text-base">Filter by Skills</h3>
           {selectedSkill && (
-            <Button variant="ghost" size="sm" onClick={() => handleSkillFilter("")}>
+            <Button variant="ghost" size="sm" onClick={() => handleSkillFilter("")} className="text-xs md:text-sm">
               Clear Filter
             </Button>
           )}
@@ -129,13 +129,13 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
 
         {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
           <div key={category} className="space-y-2">
-            <p className="text-sm font-medium text-muted-foreground">{category}</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-xs md:text-sm font-medium text-muted-foreground">{category}</p>
+            <div className="flex flex-wrap gap-1.5 md:gap-2">
               {categorySkills.map((skill) => (
                 <Badge
                   key={skill.id}
                   variant={selectedSkill === skill.name ? "default" : "outline"}
-                  className={`cursor-pointer transition-colors ${
+                  className={`cursor-pointer transition-colors text-xs md:text-sm ${
                     selectedSkill === skill.name
                       ? "bg-amber-500 hover:bg-amber-600"
                       : "hover:bg-amber-50 hover:text-amber-700 hover:border-amber-300"
@@ -153,42 +153,44 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
 
       {/* Results Count */}
       <div className="flex items-center justify-between border-t pt-4">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs md:text-sm text-muted-foreground">
           {profiles.length} {profiles.length === 1 ? "student" : "students"} found
         </p>
       </div>
 
       {/* Student Cards Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {profiles.length > 0 ? (
           profiles.map((profile) => (
             <Card key={profile.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
+              <CardHeader className="pb-3">
                 <div className="flex flex-col items-center text-center gap-3">
-                  <Avatar className="h-20 w-20 border-2 border-amber-100">
+                  <Avatar className="h-16 w-16 md:h-20 md:w-20 border-2 border-amber-100">
                     <AvatarImage src={profile.avatar_url || undefined} />
-                    <AvatarFallback className="bg-amber-100 text-amber-700 text-xl">
+                    <AvatarFallback className="bg-amber-100 text-amber-700 text-lg md:text-xl">
                       {getInitials(profile.full_name)}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="font-semibold text-lg">{profile.full_name}</h3>
-                    <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
+                    <h3 className="font-semibold text-base md:text-lg">{profile.full_name}</h3>
+                    <div className="flex items-center justify-center gap-1 text-xs md:text-sm text-muted-foreground mt-1">
                       <Briefcase className="h-3 w-3" />
-                      <span>{profile.department}</span>
+                      <span className="line-clamp-1">{profile.department}</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground">
+                    <div className="flex items-center justify-center gap-1 text-xs md:text-sm text-muted-foreground">
                       <MapPin className="h-3 w-3" />
-                      <span>{profile.university}</span>
+                      <span className="line-clamp-1">{profile.university}</span>
                     </div>
-                    <Badge variant="secondary" className="mt-2">
+                    <Badge variant="secondary" className="mt-2 text-xs">
                       {profile.year_of_study}
                     </Badge>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                {profile.bio && <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{profile.bio}</p>}
+                {profile.bio && (
+                  <p className="text-xs md:text-sm text-muted-foreground mb-4 line-clamp-2">{profile.bio}</p>
+                )}
 
                 {/* Skills */}
                 {profile.user_skills && profile.user_skills.length > 0 && (
@@ -210,10 +212,10 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
                 )}
 
                 {/* Actions */}
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Button
                     variant="outline"
-                    className="flex-1 bg-transparent"
+                    className="flex-1 bg-transparent text-xs md:text-sm"
                     size="sm"
                     onClick={() => router.push(`/profile/${profile.id}`)}
                   >
@@ -221,10 +223,10 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
                   </Button>
                   <Button
                     size="sm"
-                    className="flex-1 bg-amber-500 hover:bg-amber-600"
+                    className="flex-1 bg-amber-500 hover:bg-amber-600 text-xs md:text-sm"
                     onClick={() => handleConnect(profile.id)}
                   >
-                    <UserPlus className="mr-2 h-4 w-4" />
+                    <UserPlus className="mr-2 h-3 w-3 md:h-4 md:w-4" />
                     Connect
                   </Button>
                 </div>
@@ -232,8 +234,8 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
             </Card>
           ))
         ) : (
-          <div className="col-span-full rounded-lg border-2 border-dashed bg-white p-12 text-center">
-            <p className="text-muted-foreground">
+          <div className="col-span-full rounded-lg border-2 border-dashed bg-white p-8 md:p-12 text-center">
+            <p className="text-sm md:text-base text-muted-foreground">
               No students found matching your criteria. Try adjusting your filters.
             </p>
           </div>
