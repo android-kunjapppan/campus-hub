@@ -63,7 +63,7 @@ export function MainNav() {
 
   useEffect(() => {
     const loadProfile = async () => {
-      console.log("[v0] Loading profile data...")
+      console.log("[] Loading profile data...")
       setIsLoading(true)
 
       try {
@@ -73,12 +73,12 @@ export function MainNav() {
         } = await supabase.auth.getUser()
 
         if (!user) {
-          console.log("[v0] No user found")
+          console.log("[] No user found")
           setIsLoading(false)
           return
         }
 
-        console.log("[v0] User found, fetching profile...")
+        console.log("[] User found, fetching profile...")
 
         const { data: profileData, error: profileError } = await supabase
           .from("profiles")
@@ -87,9 +87,9 @@ export function MainNav() {
           .single()
 
         if (profileError) {
-          console.error("[v0] Profile fetch error:", profileError)
+          console.error("[] Profile fetch error:", profileError)
         } else if (profileData) {
-          console.log("[v0] Profile loaded successfully")
+          console.log("[] Profile loaded successfully")
           setProfile(profileData)
         }
 
@@ -107,7 +107,7 @@ export function MainNav() {
           .limit(5)
 
         if (notifError) {
-          console.error("[v0] Notifications fetch error:", notifError)
+          console.error("[] Notifications fetch error:", notifError)
         } else if (notifData) {
           setNotifications(notifData)
         }
@@ -126,7 +126,7 @@ export function MainNav() {
           .limit(5)
 
         if (msgError) {
-          console.error("[v0] Messages fetch error:", msgError)
+          console.error("[] Messages fetch error:", msgError)
         } else if (msgData) {
           setMessages(msgData)
         }
@@ -138,7 +138,7 @@ export function MainNav() {
           .eq("is_read", false)
 
         if (msgCountError) {
-          console.error("[v0] Message count error:", msgCountError)
+          console.error("[] Message count error:", msgCountError)
         } else if (count !== null) {
           setUnreadMessages(count)
         }
@@ -150,12 +150,12 @@ export function MainNav() {
           .eq("is_read", false)
 
         if (notifCountError) {
-          console.error("[v0] Notification count error:", notifCountError)
+          console.error("[] Notification count error:", notifCountError)
         } else if (notifCount !== null) {
           setUnreadNotifications(notifCount)
         }
       } catch (error) {
-        console.error("[v0] Error loading profile data:", error)
+        console.error("[] Error loading profile data:", error)
       } finally {
         setIsLoading(false)
       }

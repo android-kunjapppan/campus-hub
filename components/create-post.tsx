@@ -53,7 +53,7 @@ export function CreatePost({ userProfile }: CreatePostProps) {
       setShowImageInput(false)
       router.refresh()
     } catch (error) {
-      console.error("[v0] Error creating post:", error)
+      console.error("[] Error creating post:", error)
     } finally {
       setIsLoading(false)
     }

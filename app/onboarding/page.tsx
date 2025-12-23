@@ -114,7 +114,7 @@ export default function OnboardingPage() {
       router.push("/feed")
       router.refresh()
     } catch (error: unknown) {
-      console.error("[v0] Onboarding error:", error)
+      console.error(" Onboarding error:", error)
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {
       setIsLoading(false)
