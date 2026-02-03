@@ -74,7 +74,7 @@ export function CreatePost({ userProfile }: CreatePostProps) {
           <div className="flex gap-4">
             <Avatar className="h-10 w-10">
               <AvatarImage src={userProfile?.avatar_url || undefined} />
-              <AvatarFallback className="bg-amber-100 text-amber-700">
+              <AvatarFallback className="bg-brand-gold/20 text-foreground">
                 {userProfile ? getInitials(userProfile.full_name) : "U"}
               </AvatarFallback>
             </Avatar>
@@ -112,7 +112,7 @@ export function CreatePost({ userProfile }: CreatePostProps) {
                 <Button
                   type="submit"
                   disabled={!content.trim() || isLoading}
-                  className="bg-amber-500 hover:bg-amber-600"
+                  className="bg-primary hover:bg-brand-red-hover"
                 >
                   <Send className="mr-2 h-4 w-4" />
                   {isLoading ? "Posting..." : "Post"}

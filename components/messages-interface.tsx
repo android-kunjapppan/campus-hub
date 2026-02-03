@@ -139,7 +139,7 @@ export function MessagesInterface({ messages: initialMessages, currentUserId }: 
                   key={userId}
                   onClick={() => setSelectedUserId(userId)}
                   className={`w-full flex items-center gap-3 p-4 hover:bg-gray-50 transition-colors border-b ${
-                    selectedUserId === userId ? "bg-amber-50" : ""
+                    selectedUserId === userId ? "bg-primary" : ""
                   }`}
                 >
                   <Avatar className="h-12 w-12">
@@ -152,7 +152,7 @@ export function MessagesInterface({ messages: initialMessages, currentUserId }: 
                     <div className="flex items-center justify-between">
                       <p className="font-semibold">{conv.user.full_name}</p>
                       {conv.unreadCount > 0 && (
-                        <span className="bg-amber-500 text-white text-xs rounded-full px-2 py-0.5">
+                        <span className="bg-primary text-white text-xs rounded-full px-2 py-0.5">
                           {conv.unreadCount}
                         </span>
                       )}
@@ -204,12 +204,12 @@ export function MessagesInterface({ messages: initialMessages, currentUserId }: 
                     >
                       <div
                         className={`max-w-[70%] rounded-2xl px-4 py-2 ${
-                          msg.sender_id === currentUserId ? "bg-amber-500 text-white" : "bg-gray-100 text-gray-900"
+                          msg.sender_id === currentUserId ? "bg-primary text-white" : "bg-gray-100 text-gray-900"
                         }`}
                       >
                         <p className="text-sm">{msg.content}</p>
                         <p
-                          className={`text-xs mt-1 ${msg.sender_id === currentUserId ? "text-amber-100" : "text-gray-500"}`}
+                          className={`text-xs mt-1 ${msg.sender_id === currentUserId ? "text-brand-gold/20" : "text-gray-500"}`}
                         >
                           {formatDistanceToNow(new Date(msg.created_at))} ago
                         </p>
@@ -233,7 +233,7 @@ export function MessagesInterface({ messages: initialMessages, currentUserId }: 
                     }
                   }}
                 />
-                <Button onClick={handleSendMessage} className="bg-amber-500 hover:bg-amber-600">
+                <Button onClick={handleSendMessage} className="bg-primary hover:bg-brand-red-hover">
                   <Send className="h-4 w-4" />
                 </Button>
               </div>

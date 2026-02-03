@@ -74,7 +74,7 @@ export function EventsGrid({ events: initialEvents, currentUserId }: EventsGridP
           variant={timeFilter === "upcoming" ? "default" : "outline"}
           onClick={() => handleTimeFilter("upcoming")}
           size="sm"
-          className={`text-xs md:text-sm ${timeFilter === "upcoming" ? "bg-amber-500 hover:bg-amber-600" : "bg-transparent"}`}
+          className={`text-xs md:text-sm ${timeFilter === "upcoming" ? "bg-primary hover:bg-brand-red-hover" : "bg-transparent"}`}
         >
           Upcoming Events
         </Button>
@@ -82,7 +82,7 @@ export function EventsGrid({ events: initialEvents, currentUserId }: EventsGridP
           variant={timeFilter === "past" ? "default" : "outline"}
           onClick={() => handleTimeFilter("past")}
           size="sm"
-          className={`text-xs md:text-sm ${timeFilter === "past" ? "bg-amber-500 hover:bg-amber-600" : "bg-transparent"}`}
+          className={`text-xs md:text-sm ${timeFilter === "past" ? "bg-primary hover:bg-brand-red-hover" : "bg-transparent"}`}
         >
           Past Events
         </Button>
@@ -97,7 +97,7 @@ export function EventsGrid({ events: initialEvents, currentUserId }: EventsGridP
               key={type}
               variant={selectedType === type ? "default" : "outline"}
               className={`cursor-pointer transition-colors text-xs md:text-sm ${
-                selectedType === type ? "bg-amber-500 hover:bg-amber-600" : "hover:bg-gray-50"
+                selectedType === type ? "bg-primary hover:bg-brand-red-hover" : "hover:bg-gray-50"
               }`}
               onClick={() => handleTypeFilter(type)}
             >
@@ -129,8 +129,8 @@ export function EventsGrid({ events: initialEvents, currentUserId }: EventsGridP
                   />
                 </div>
               ) : (
-                <div className="h-40 md:h-48 bg-gradient-to-br from-amber-100 to-blue-100 flex items-center justify-center">
-                  <Calendar className="h-12 w-12 md:h-16 md:w-16 text-amber-500" />
+                <div className="h-40 md:h-48 bg-gradient-to-br from-brand-gold/20 to-blue-100 flex items-center justify-center">
+                  <Calendar className="h-12 w-12 md:h-16 md:w-16 text-primary" />
                 </div>
               )}
 
@@ -180,7 +180,7 @@ export function EventsGrid({ events: initialEvents, currentUserId }: EventsGridP
                 </div>
 
                 {/* Actions */}
-                <Button className="w-full bg-amber-500 hover:bg-amber-600 mt-4 text-xs md:text-sm" size="sm">
+                <Button className="w-full bg-primary hover:bg-brand-red-hover mt-4 text-xs md:text-sm" size="sm">
                   {isPast(new Date(event.date)) ? "View Details" : "Register Now"}
                 </Button>
               </CardContent>

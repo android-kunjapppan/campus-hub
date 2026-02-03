@@ -138,7 +138,7 @@ export default function NotificationsPage() {
             <Card
               key={notification.id}
               className={`p-4 cursor-pointer transition-colors hover:bg-gray-50 ${
-                !notification.is_read ? "bg-amber-50/50 border-amber-200" : ""
+                !notification.is_read ? "bg-primary/50 border-primary" : ""
               }`}
               onClick={() => !notification.is_read && markAsRead(notification.id)}
             >
@@ -148,7 +148,7 @@ export default function NotificationsPage() {
                   {notification.sender && (
                     <Avatar className="h-10 w-10">
                       <AvatarImage src={notification.sender.avatar_url || undefined} />
-                      <AvatarFallback className="bg-amber-100 text-amber-700">
+                      <AvatarFallback className="bg-brand-gold/20 text-foreground">
                         {getInitials(notification.sender.full_name)}
                       </AvatarFallback>
                     </Avatar>
@@ -160,7 +160,7 @@ export default function NotificationsPage() {
                     </p>
                   </div>
                 </div>
-                {!notification.is_read && <div className="h-2 w-2 rounded-full bg-amber-500 flex-shrink-0 mt-2"></div>}
+                {!notification.is_read && <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>}
               </div>
             </Card>
           ))}

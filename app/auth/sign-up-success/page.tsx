@@ -9,8 +9,8 @@ export default function SignUpSuccessPage() {
       <div className="w-full max-w-md">
         <Card className="border-2">
           <CardHeader className="text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-              <Mail className="h-8 w-8 text-amber-600" />
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-gold/20">
+              <Mail className="h-8 w-8 text-brand-red-hover" />
             </div>
             <CardTitle className="text-2xl">Check your email</CardTitle>
             <CardDescription>We&apos;ve sent you a confirmation link</CardDescription>

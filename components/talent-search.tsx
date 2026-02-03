@@ -137,8 +137,8 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
                   variant={selectedSkill === skill.name ? "default" : "outline"}
                   className={`cursor-pointer transition-colors text-xs md:text-sm ${
                     selectedSkill === skill.name
-                      ? "bg-amber-500 hover:bg-amber-600"
-                      : "hover:bg-amber-50 hover:text-amber-700 hover:border-amber-300"
+                      ? "bg-primary hover:bg-brand-red-hover"
+                      : "hover:bg-primary hover:text-foreground hover:border-primary"
                   }`}
                   onClick={() => handleSkillFilter(skill.name)}
                 >
@@ -165,9 +165,9 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
             <Card key={profile.id} className="hover:shadow-lg transition-shadow">
               <CardHeader className="pb-3">
                 <div className="flex flex-col items-center text-center gap-3">
-                  <Avatar className="h-16 w-16 md:h-20 md:w-20 border-2 border-amber-100">
+                  <Avatar className="h-16 w-16 md:h-20 md:w-20 border-2 border-brand-gold/20">
                     <AvatarImage src={profile.avatar_url || undefined} />
-                    <AvatarFallback className="bg-amber-100 text-amber-700 text-lg md:text-xl">
+                    <AvatarFallback className="bg-brand-gold/20 text-foreground text-lg md:text-xl">
                       {getInitials(profile.full_name)}
                     </AvatarFallback>
                   </Avatar>
@@ -223,7 +223,7 @@ export function TalentSearch({ profiles: initialProfiles, skills, currentUserId 
                   </Button>
                   <Button
                     size="sm"
-                    className="flex-1 bg-amber-500 hover:bg-amber-600 text-xs md:text-sm"
+                    className="flex-1 bg-primary hover:bg-brand-red-hover text-xs md:text-sm"
                     onClick={() => handleConnect(profile.id)}
                   >
                     <UserPlus className="mr-2 h-3 w-3 md:h-4 md:w-4" />

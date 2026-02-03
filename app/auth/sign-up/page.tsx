@@ -103,7 +103,7 @@ export default function SignUpPage() {
                   />
                 </div>
                 {error && <p className="text-sm text-red-500 bg-red-50 p-3 rounded-md">{error}</p>}
-                <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600" disabled={isLoading}>
+                <Button type="submit" className="w-full bg-primary hover:bg-brand-red-hover" disabled={isLoading}>
                   {isLoading ? "Creating account..." : "Sign up"}
                 </Button>
               </div>
@@ -111,7 +111,7 @@ export default function SignUpPage() {
                 Already have an account?{" "}
                 <Link
                   href="/auth/login"
-                  className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-4"
+                  className="text-brand-red-hover hover:text-foreground font-medium underline underline-offset-4"
                 >
                   Login
                 </Link>

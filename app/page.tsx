@@ -9,20 +9,20 @@ export default function LandingPage() {
       <main className="flex-1">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-sm font-medium text-amber-900">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-brand-gold/20 px-4 py-2 text-sm font-medium text-foreground">
               <GraduationCap className="h-4 w-4" />
               Exclusive for University Students
             </div>
             <h1 className="mb-6 text-5xl font-bold tracking-tight text-navy-900 md:text-6xl lg:text-7xl">
               Your Campus Network,
-              <span className="text-amber-500"> Reimagined</span>
+              <span className="text-primary"> Reimagined</span>
             </h1>
             <p className="mb-8 text-xl text-gray-600 leading-relaxed">
               Connect with students, discover events, showcase your talents, and unlock exclusive discounts—all in one
               verified student platform.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="bg-amber-500 hover:bg-amber-600 text-white shadow-lg">
+              <Button asChild size="lg" className="bg-primary hover:bg-brand-red-hover text-white shadow-lg">
                 <Link href="/auth/sign-up">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -36,8 +36,8 @@ export default function LandingPage() {
           {/* Features Grid */}
           <div className="mx-auto mt-24 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-2xl border-2 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-                <Users className="h-6 w-6 text-amber-600" />
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-gold/20">
+                <Users className="h-6 w-6 text-brand-red-hover" />
               </div>
               <h3 className="mb-2 text-lg font-semibold">Network & Connect</h3>
               <p className="text-sm text-muted-foreground">

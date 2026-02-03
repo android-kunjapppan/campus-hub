@@ -41,7 +41,7 @@ export function StudentIdCard({ profile, userEmail }: StudentIdCardProps) {
   return (
     <div className="space-y-6">
       {/* Main ID Card */}
-      <Card className="relative overflow-hidden bg-gradient-to-br from-amber-500 via-amber-400 to-yellow-500 border-0 shadow-2xl">
+      <Card className="relative overflow-hidden bg-gradient-to-br from-primary via-amber-400 to-yellow-500 border-0 shadow-2xl">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
@@ -58,7 +58,7 @@ export function StudentIdCard({ profile, userEmail }: StudentIdCardProps) {
                 <p className="text-xs text-white/90">Student Identification</p>
               </div>
             </div>
-            <Badge className="bg-white text-amber-700 hover:bg-white/90">{profile.year_of_study}</Badge>
+            <Badge className="bg-white text-foreground hover:bg-white/90">{profile.year_of_study}</Badge>
           </div>
 
           {/* Student Info */}
@@ -67,7 +67,7 @@ export function StudentIdCard({ profile, userEmail }: StudentIdCardProps) {
             <div className="relative">
               <Avatar className="h-32 w-32 border-4 border-white shadow-lg">
                 <AvatarImage src={profile.avatar_url || undefined} />
-                <AvatarFallback className="bg-white text-amber-600 text-2xl font-bold">
+                <AvatarFallback className="bg-white text-brand-red-hover text-2xl font-bold">
                   {getInitials(profile.full_name)}
                 </AvatarFallback>
               </Avatar>
@@ -129,7 +129,7 @@ export function StudentIdCard({ profile, userEmail }: StudentIdCardProps) {
 
       {/* Action Buttons */}
       <div className="flex gap-3">
-        <Button onClick={handleDownload} className="flex-1 bg-amber-500 hover:bg-amber-600">
+        <Button onClick={handleDownload} className="flex-1 bg-primary hover:bg-brand-red-hover">
           Download ID Card
         </Button>
         <Button variant="outline" className="flex-1 bg-transparent">
@@ -145,7 +145,7 @@ export function StudentIdCard({ profile, userEmail }: StudentIdCardProps) {
             <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12 border-2 border-white">
                 <AvatarImage src={profile.avatar_url || undefined} />
-                <AvatarFallback className="bg-amber-500 text-white text-sm">
+                <AvatarFallback className="bg-primary text-white text-sm">
                   {getInitials(profile.full_name)}
                 </AvatarFallback>
               </Avatar>

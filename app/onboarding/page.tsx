@@ -228,7 +228,7 @@ export default function OnboardingPage() {
                         key={skill}
                         variant={selectedSkills.includes(skill) ? "default" : "outline"}
                         className={`cursor-pointer transition-colors ${
-                          selectedSkills.includes(skill) ? "bg-amber-500 hover:bg-amber-600" : "hover:bg-amber-50"
+                          selectedSkills.includes(skill) ? "bg-primary hover:bg-brand-red-hover" : "hover:bg-primary"
                         }`}
                         onClick={() => toggleSkill(skill)}
                       >
@@ -241,7 +241,7 @@ export default function OnboardingPage() {
 
                 {error && <p className="text-sm text-red-500 bg-red-50 p-3 rounded-md">{error}</p>}
 
-                <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600" disabled={isLoading}>
+                <Button type="submit" className="w-full bg-primary hover:bg-brand-red-hover" disabled={isLoading}>
                   {isLoading ? "Creating profile..." : "Complete Setup"}
                 </Button>
               </div>

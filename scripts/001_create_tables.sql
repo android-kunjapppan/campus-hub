@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS public.discounts (
   brand_logo TEXT,
   description TEXT NOT NULL,
   discount_code TEXT,
+  redeem_url TEXT,
   category TEXT NOT NULL,
   valid_until TIMESTAMPTZ NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW(),

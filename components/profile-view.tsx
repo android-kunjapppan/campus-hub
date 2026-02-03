@@ -82,9 +82,9 @@ export function ProfileView({
         <CardContent className="pt-6">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Avatar */}
-            <Avatar className="h-24 w-24 md:h-32 md:w-32 border-4 border-amber-100 mx-auto md:mx-0">
+            <Avatar className="h-24 w-24 md:h-32 md:w-32 border-4 border-brand-gold/20 mx-auto md:mx-0">
               <AvatarImage src={profile.avatar_url || undefined} />
-              <AvatarFallback className="bg-amber-100 text-amber-700 text-2xl md:text-3xl">
+              <AvatarFallback className="bg-brand-gold/20 text-foreground text-2xl md:text-3xl">
                 {getInitials(profile.full_name)}
               </AvatarFallback>
             </Avatar>
@@ -163,7 +163,7 @@ export function ProfileView({
       </Card>
 
       {/* Student Virtual ID Card */}
-      <Card className="mb-6 relative overflow-hidden bg-gradient-to-br from-amber-500 via-amber-400 to-yellow-500 border-0 shadow-2xl">
+      <Card className="mb-6 relative overflow-hidden bg-gradient-to-br from-primary via-amber-400 to-yellow-500 border-0 shadow-2xl">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-white rounded-full blur-3xl transform translate-x-16 md:translate-x-32 -translate-y-16 md:-translate-y-32"></div>
@@ -180,7 +180,7 @@ export function ProfileView({
                 <p className="text-xs text-white/90 hidden md:block">Student Identification</p>
               </div>
             </div>
-            <Badge className="bg-white text-amber-700 hover:bg-white/90 text-xs md:text-sm">
+            <Badge className="bg-white text-foreground hover:bg-white/90 text-xs md:text-sm">
               {profile.year_of_study}
             </Badge>
           </div>
@@ -191,7 +191,7 @@ export function ProfileView({
             <div className="relative flex-shrink-0">
               <Avatar className="h-20 w-20 md:h-32 md:w-32 border-3 md:border-4 border-white shadow-lg">
                 <AvatarImage src={profile.avatar_url || undefined} />
-                <AvatarFallback className="bg-white text-amber-600 text-lg md:text-2xl font-bold">
+                <AvatarFallback className="bg-white text-brand-red-hover text-lg md:text-2xl font-bold">
                   {getInitials(profile.full_name)}
                 </AvatarFallback>
               </Avatar>
@@ -268,7 +268,7 @@ export function ProfileView({
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {profile.user_skills.map((us) => (
-                <Badge key={us.skills.id} variant="secondary" className="bg-amber-50 text-amber-700 text-xs md:text-sm">
+                <Badge key={us.skills.id} variant="secondary" className="bg-primary text-foreground text-xs md:text-sm">
                   {us.skills.name}
                 </Badge>
               ))}
@@ -289,7 +289,7 @@ export function ProfileView({
           <CardContent>
             <div className="space-y-6">
               {experience.map((exp) => (
-                <div key={exp.id} className="border-l-2 border-amber-200 pl-4">
+                <div key={exp.id} className="border-l-2 border-primary pl-4">
                   <h3 className="font-semibold text-base md:text-lg">{exp.title}</h3>
                   <p className="text-sm md:text-base text-muted-foreground">{exp.company}</p>
                   <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-xs md:text-sm text-muted-foreground mt-1">

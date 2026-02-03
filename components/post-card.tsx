@@ -201,7 +201,7 @@ export function PostCard({ post, currentUserId }: PostCardProps) {
                 onClick={handleComment}
                 disabled={!commentText.trim()}
                 size="icon"
-                className="bg-amber-500 hover:bg-amber-600"
+                className="bg-primary hover:bg-brand-red-hover"
               >
                 <Send className="h-4 w-4" />
               </Button>
